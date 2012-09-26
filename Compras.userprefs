@@ -1,4 +1,4 @@
-﻿<Properties>
+﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.Workbench ActiveDocument="ComprasWeb/Web.config">
     <Files>
@@ -17,10 +17,9 @@
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="ComprasWeb" expanded="True">
             <Node name="Global.asax" expanded="True" />
-            <Node name="Web.config" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -30,4 +29,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <AuthorInfo Name="joil" Email="joil@joil.cl" Copyright="joil" Company="" Trademark="" />
 </Properties>
