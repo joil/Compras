@@ -1,0 +1,23 @@
+to: $to
+from: adquisiciones@granelesdechile.com
+subject: $subject
+
+La solicitud de compra tiene fecha posible de entrega para el $fecha, al momento de recepcionar 
+los productos ingresar al siguiente link para cerrar el proceso
+
+
+http://compras.gdelsur.com/purchase/render.rails?idpurchase=$idpurchase
+
+	Empresa : $purchase.Company.Name
+	Solicitante : $purchase.UserRequest
+	Fecha Solicitud: $purchase.DateRequest
+	Aprobador : $purchase.DateApproval
+	Fecha Aprobacion: $purchase.DateApproval
+	Estado : $purchase.Status
+
+#foreach($pp in $purchaseproducts)
+	#if ($pp.Product.Name) $pp.Product.Name #end #if($pp.Comment)$pp.Comment #end #if ($pp.EstimatedPrice) $pp.EstimatedPrice #end $pp.Quantity
+#end
+
+Saludos Cordiales,
+Departamento de compras.

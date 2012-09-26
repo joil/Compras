@@ -1,0 +1,36 @@
+<h2>Nuevo Aprobador</h2>
+<form class="form-horizontal" action="create" method="post">
+	<fieldset>
+		<div class="control-group">
+			<label class="control-label" for="companyapprover.Name">Nombre</label>
+			<div class="controls">
+				$FormHelper.TextField("companyapprover.Name")
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="companyapprover.Login">Login</label>
+			<div class="controls">
+				$FormHelper.TextField("companyapprover.Login")
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="companyapprover.Domain">Dominio</label>
+			<div class="controls">
+				$FormHelper.TextField("companyapprover.Domain")
+				<span class="help-inline">ej : "granelesdechile.com"</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="companyapprover.Company.Id">Empresa</label>
+			<div class="controls">
+				$FormHelper.Select("companyapprover.Company.Id", $companys, "%{value='Id', text='Name', firstoption='Seleccionar Empresa ...'}")
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">Guardar</button>
+			<button type="reset" class="btn">Cancelar</button>
+			<a href="list" class="btn btn-inverse">Lista</a>
+		</div>
+	</fieldset>
+</form>

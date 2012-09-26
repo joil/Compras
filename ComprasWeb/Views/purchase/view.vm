@@ -1,0 +1,62 @@
+<h2> Solicitud de Compra</h2>
+<dl class="dl-horizontal">
+	<dt>Empresa : </dt><dd>$purchase.Company.Name</dd>
+	<dt>Solicitante : </dt><dd>#if ($purchase.NameUserRequest) $purchase.NameUserRequest #else $purchase.UserRequest #end</dd>
+	<dt>Fecha : </dt><dd>$purchase.DateRequest</dd>
+	<dt>Aprobador : </dt><dd>#if($purchase.UserApproval.Name) $purchase.UserApproval.Name #else - #end</dd>
+	<dt>Fecha Aprobacion: </dt><dd>#if ($purchase.DateApproval) $purchase.DateApproval #else - #end</dd>
+	<dt>Estado: </dt><dd>#if ($purchase.Status) $purchase.Status #else - #end</dd>
+	<dt>Asignado a : </dt><dd>#if (($purchase.Assigned) && ($purchase.Assigned != "0")) $purchase.Assigned #else - #end</dd>
+	#if ($purchase.PurchaseAttachments)
+		<dt>Adjunto : </dt>
+			<dd>
+				#foreach($pa in $purchase.PurchaseAttachments)
+					<a href="GetUpload.rails?name=$pa.Name&path=$pa.Path">$pa.Name </a>
+				#end
+			</dd>
+	#end
+<table class="table table-bordered table-striped">
+	<thead>
+	  <tr>
+	    <th>Producto</th>
+	    <th>Comentario</th>
+	    <th>Precio</th>
+	    <th>Cantidad</th>
+	  </tr>
+	</thead>
+	<tbody>
+	#foreach($pp in $purchaseproducts)
+	  <tr>
+	    <td>$pp.Product.Name</td>
+	    <td>#if ($pp.Comment) $pp.Comment #end</td>
+	    <td>#if ($pp.EstimatedPrice) $pp.EstimatedPrice #end</td>
+	    <td>$pp.Quantity</td>
+	  </tr>
+	#end
+	</tbody>
+</table>
+<div class="form-actions">
+	<a href="javascript:history.go(-1)" class="btn btn-inverse">Volver</a>
+</div>
+
+#if ($purchase.QuantityComment > 0)
+	<h3>Comentarios:</h3>
+	<table class="table table-bordered table-striped">
+		<thead>
+		  <tr>
+		    <th>Fecha</th>
+		    <th>Usuario</th>
+		    <th>Comentario</th>
+		  </tr>
+		</thead>
+		<tbody>
+		#foreach($pc in $purchase.PurchaseComments)
+		  <tr>
+		    <td>$pc.Created</td>
+		    <td>#if ($pc.UserComment) $pc.UserComment #end</td>
+		    <td>#if ($pc.Comment) $pc.Comment #end</td>
+		  </tr>
+		#end
+		</tbody>
+	</table>
+#end

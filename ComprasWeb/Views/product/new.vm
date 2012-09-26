@@ -1,0 +1,24 @@
+<h2>Nuevo Producto</h2>
+<form class="form-horizontal" action="/product/create" method="post">
+	<fieldset>
+		<div class="control-group">
+			<label class="control-label" for="product.Name">Nombre</label>
+			<div class="controls">
+				$FormHelper.TextField("product.Name")
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="product.FamilyProduct">Familia de Productos</label>
+			<div class="controls">
+				$FormHelper.Select("product.FamilyProduct.Id", $familyproducts, "%{value='Id', text='Name', firstoption='Seleccionar Familia ...'}")
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">Guardar</button>
+			<button type="reset" class="btn">Cancelar</button>
+			<a href="list" class="btn btn-inverse">Lista</a>
+		</div>
+	</fieldset>
+</form>

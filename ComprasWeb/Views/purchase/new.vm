@@ -1,0 +1,115 @@
+<div class="span3">
+	<div id="menu" class="well sidebar-nav">
+		<ul class="nav nav-list">
+			<form class="form-horizontal" action="new" method="post">
+				<li class="nav-header">Empresa</li>
+				<li id="lista">$FormHelper.Select("company", $companys, "%{value='Id', text='Name', firstoption='Seleccionar Empresa ...', onchange='this.form.submit();'}")</li>
+				<li class="nav-header">Aprobador</li>
+				<li id="lista">$FormHelper.Select("approver", $approvers, "%{value='Id', text='Name', firstoption='Seleccionar Aprobador ...'}")</li>
+				<li class="nav-header">Familia de Productos</li>
+				<li id="lista">$FormHelper.Select("familyproduct", $familyproducts, "%{value='Id', text='Name', firstoption='Seleccionar Familia ...', onchange='this.form.submit();'}")</li>
+				<input type="hidden" id="commenthidden" name="comment">
+			</form>
+		</ul>
+	</div>
+	<div id="menu2" class="well sidebar-nav">
+		<center><a class="btn btn-info" data-toggle="modal" href="#comentario">Agregar Comentario</a></center>
+	</div>
+	<div id="menu3" class="well sidebar-nav">
+		<h4 class="nav-header">Adjuntar Archivo</h4>
+<form class="form-horizontal" action="submit" method="post" enctype="multipart/form-data">
+		<center><input type="file" id="uploadedFile" name="uploadedFile" /></center>
+	</div>
+	<div id="menu4" class="well sidebar-nav">
+		Para cualquier consulta enviar correo : <a href=mailto:'adquisiciones@granelesdechile.com'>Departamento de Adquisiciones</a>
+	</div>
+	<div id="menu5" class="well sidebar-nav">
+		Sistema Desarrollado por Dpto. Soporte
+	</div>
+</div><!--/span-->
+
+<div class="span9">
+	
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th width='2%'>[X]</th>
+            <th width='30%'>Producto</th>
+            <th width='45%'>Comentario</th>
+            <th width='15%'>Precio</th>
+            <th width='8%'>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+        #foreach($product in $products)
+        	<input type="hidden" name="purchaseproducts[$velocityCount].Product.Id" value="$product.Id" />
+          <tr>
+            <td>
+				<input type="checkbox" id="purchaseproducts[$velocityCount].Checked" name="purchaseproducts[$velocityCount].Checked" value="True" hiddenValue="False"/>
+				<input type="hidden" id="purchaseproducts[$velocityCount].CheckedH" name="purchaseproducts[$velocityCount].Checked" value="False" />
+			</td>
+            <td>$product.Name</td>
+            <td><input class="span12" type="text" id="purchaseproducts[$velocityCount].Comment" name="purchaseproducts[$velocityCount].Comment" maxlength='250'></td>
+            <td>
+            	<div class="input-prepend input-append">
+					<span class="add-on">$</span><input class="input-mini" type="text" placeholder="Opcional" id="purchaseproducts[$velocityCount].EstimatedPrice" name="purchaseproducts[$velocityCount].EstimatedPrice">
+				</div>
+			</td>
+            <td><input class="input-mini" type="text" value="0" id="purchaseproducts[$velocityCount].Quantity" name="purchaseproducts[$velocityCount].Quantity"></td>
+          </tr>
+        #end
+        </tbody>
+      </table>
+		$Form.HiddenField("companyid")
+		$Form.HiddenField("userapproval")
+		$Form.HiddenField("familyproductid")
+
+<div class="modal hide" id="comentario">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">x</button>
+		<h3>Comentario :</h3>
+	</div>
+	<div class="modal-body">
+		$FormHelper.TextArea("comment", "%{class='span12', rows='5'}")
+		<div>Quedan <span id="charsLeft"></span> caracteres</div>
+	</div>
+	<div class="modal-footer">
+		<a href="#" id="btnclosemodal" class="btn" data-dismiss="modal">Cerrar</a>
+	</div>
+</div>
+
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Enviar</button>
+		<button type="reset" class="btn">Cancel</button>
+	</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	jQuery('#comment').limit('250','#charsLeft');
+	
+	$(document).ready(function() {
+		jQuery('#companyid').val($('#company').val());
+		jQuery('#userapproval').val($('#approver').val());
+		jQuery('#familyproductid').val($('#familyproduct').val());
+		jQuery('#commenthidden').val($('#comment').val());
+	});
+	
+	jQuery("#btnclosemodal").bind("click", function(e) {
+		e.preventDefault();
+		jQuery('#commenthidden').val($('#comment').val());
+		
+	});
+	
+	jQuery('form').keypress(function(e){   
+		if(e == 13){
+			return false;
+		}
+	});
+
+	jQuery('input').keypress(function(e){
+		if(e.which == 13){
+			return false;
+		}
+	});
+</script>

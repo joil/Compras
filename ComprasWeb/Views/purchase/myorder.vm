@@ -1,0 +1,51 @@
+<h2>Mis Solicitudes</h2>
+#foreach($p in $purchases)
+	<dl class="dl-horizontal">
+		<dt>ID : </dt><dd>$p.Id</dd>
+		<dt>Empresa : </dt><dd>$p.Company.Name</dd>
+		<dt>Solicitante : </dt><dd>#if ($p.NameUserRequest) $p.NameUserRequest #else $p.UserRequest #end</dd>
+		<dt>Fecha : </dt><dd>$p.DateRequest</dd>
+		<dt>Aprobador : </dt><dd>#if($p.UserApproval.Name) $p.UserApproval.Name #else - #end</dd>
+		<dt>Fecha Aprobacion: </dt><dd>#if ($p.DateApproval) $p.DateApproval #else - #end</dd>
+		<dt>Estado: </dt><dd>#if ($p.Status) $p.Status #else - #end</dd>
+		<dt>Comentarios: </dt><dd>#if ($p.QuantityComment > 0) <a class="btn-small btn-info" data-toggle="modal" href="#Modal$p.Id" >Comentarios</a> #else - #end</dd>
+	</dl>
+	
+	#if($p.QuantityComment > 0)
+		<div class="modal hide" id="Modal$p.Id">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h3>Comentarios</h3>
+			</div>
+			<div class="modal-body">
+				#foreach($pc in $p.PurchaseComments)
+					<p>$pc.UserComment : $pc.Comment</p>
+				#end
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Cerra</a>
+			</div>
+		</div>
+	#end
+<table class="table table-bordered table-striped">
+	<thead>
+	  <tr>
+	    <th>Producto</th>
+	    <th>Comentario</th>
+	    <th>Precio</th>
+	    <th>Cantidad</th>
+	  </tr>
+	</thead>
+	<tbody>
+	#foreach($pp in $p.PurchaseProducts)
+	  <tr>
+	    <td>$pp.Product.Name</td>
+	    <td>#if ($pp.Comment) $pp.Comment #end</td>
+	    <td>#if ($pp.EstimatedPrice) $pp.EstimatedPrice #end</td>
+	    <td>#if ($pp.Quantity) $pp.Quantity #end</td>
+	  </tr>
+	#end
+	</tbody>
+</table>
+#end
+<br />

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Compras GdelSur</title>
+    <meta name="description" content="Sitio con ejemplos y demos">
+    <meta name="author" content="Jose Pino">
+    <!—[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]—>
+    <link rel="shortcut icon" href="$siteRoot/Contents/img/favicon.ico">
+    <link rel="stylesheet" href="$siteRoot/Contents/css/bootstrap.min.css">
+    <style>
+      body { padding-top: 60px; }
+    </style>
+    <link href="$siteRoot/Contents/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="$siteRoot/Contents/css/datepicker.css" rel="stylesheet">
+    <script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script  type="text/javascript" src="$siteRoot/Contents/js/bootstrap.min.js"></script>
+    <script  type="text/javascript" src="$siteRoot/Contents/js/bootstrap-tab.js"></script>
+    <script  type="text/javascript" src="$siteRoot/Contents/js/bootstrap-datepicker.js"></script>
+    <script  type="text/javascript" src="$siteRoot/Contents/js/jquery.limit-1.2.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+
+        <div class="container-fluid">
+          <a class="brand" href="/"><img src="/Contents/img/logo.png"> Compras</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="/"><i class='icon-home icon-white'></i>Inicio</a></li>
+              <li><a href="/purchase/myorder"><i class='icon-th-list icon-white'></i>Mis Solicitudes</a></li>
+              #blockcomponent(Security with "role=approver")
+              	<li><a href="/purchase/myapprover"><i class='icon-inbox icon-white'></i>Mis Solicitudes por Aprobar</a></li>
+              #end
+              #blockcomponent(Security with "role=admin")
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class='icon-lock icon-white'></i>Admin <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/admin/allpurchase">Solicitudes</a></li>
+                <li class="divider"></li>
+                <li class="nav-header">Datos</li>
+
+                <li><a href="/company/list">Empresas</a></li>
+                <li><a href="/companyapprover/list">Aprobadores</a></li>
+                <li><a href="/familyproduct/list">Familia de Productos</a></li>
+                <li><a href="/product/list">Productos</a></li>
+              </ul>
+            </li>
+            #end
+            </ul>
+            <ul class="nav pull-right">
+              <li class='dropdown'>
+              <a href="#" class='dropdown-toggle' data-toggle='dropdown'>
+              	<i class='icon-user icon-white'></i>
+              		#if ($Context.CurrentUser.Identity.IsAuthenticated)
+						$Context.CurrentUser.Identity.Name
+					#end
+				<b class='caret'></b>
+				</a>
+                <ul class='dropdown-menu'>
+                    <li><a href='/login/logout'><i class='icon-off icon-black'></i> Logout</a></li>
+
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+		#if($Flash.TypeMsg)
+		    <div class="$Flash.TypeMsg">
+				<button class="close" data-dismiss="alert">x</button>
+				<strong>$Flash.Msg</strong>
+			</div>
+		#end
+      <div class="row-fluid">
+		$childContent
+      </div>
+    </div>
+  </body>
+</html>

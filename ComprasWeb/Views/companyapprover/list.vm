@@ -1,0 +1,22 @@
+<a href="new" class="btn btn-success">Nuevo Aprobador</a>
+<table class="table table-bordered table-striped">
+	<thead>
+	  <tr>
+	    <th>Nombre</th>
+	    <th>Login</th>
+	    <th>@ Dominio</th>
+	    <th>Empresa</th>
+	    <th>acciones</th>
+	</thead>
+	<tbody>
+	#foreach($ca in $companyapprovers)
+	  <tr>
+	    <td>$ca.Name</td>
+	    <td>#if ($ca.Login) $ca.Login #end</td>
+	    <td>#if ($ca.Domain) $ca.Domain #end</td>
+	    <td>#if ($ca.Company.Name) $ca.Company.Name #end</td>
+	    <td><a href="edit?id=$ca.Id">Editar</a></td>
+	  </tr>
+	#end
+	</tbody>
+</table>

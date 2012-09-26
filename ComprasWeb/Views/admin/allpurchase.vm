@@ -1,0 +1,67 @@
+<form class="well form-search" action="allpurchase" method="post">
+	Filtrar por Estado : $FormHelper.Select("statusid", $status,"%{onchange='this.form.submit();'}")
+	Empresa : $FormHelper.Select("company", $companys, "%{value='Id', text='Name', firstoption='Todas ...', onchange='this.form.submit();'}")
+	Buscar por ID : <input type="text" class="input-mini search-query" name="findid"><button type="submit" class="btn">Buscar</button>
+</form>
+
+<table class="table table-bordered table-striped">
+	<thead>
+	  <tr>
+	    <th>ID</th>
+	    <th>Empresa</th>
+	    <th>Solicitante</th>
+	    <th>Fecha</th>
+	    <th>Aprobador</th>
+	    <th>Estado</th>
+	    <th>Asignado</th>
+	    <th>Comentario</th>
+	    <th>X</th>
+	  </tr>
+	</thead>
+	<tbody>
+	#foreach($p in $purchases)
+	  <tr>
+	    <td>$p.Id</td>
+	    <td>$p.Company.Name</td>
+	    <td>#if ($p.NameUserRequest) $p.NameUserRequest #else $p.UserRequest #end</td>
+	    <td>$p.DateRequest</td>
+	    <td>$p.UserApproval.Name</td>
+	    <td>#if ($p.Status) $p.Status #else - #end</td>
+	    <td>#if (($p.Assigned) && ($p.Assigned != "0")) $p.Assigned #else - #end</td>
+	    <td>#if ($p.QuantityComment > 0) <a class="btn-small btn-info" data-toggle="modal" href="#Modal$p.Id" >Comentarios</a> #else - #end</td>
+	    <td>
+	    	<a class="btn-small btn-success" href='/purchase/view.rails?idpurchase=$p.Id'>Ver</a>
+	    	<a class="btn-small btn-warning" href='editpurchase?id=$p.Id'>Editar</a>
+	    </td>
+	  </tr>
+		#if($p.QuantityComment > 0)
+			<div class="modal hide" id="Modal$p.Id">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">x</button>
+					<h3>Comentarios</h3>
+				</div>
+				<div class="modal-body">
+					#foreach($pc in $p.PurchaseComments)
+						<p>$pc.UserComment : $pc.Comment</p>
+					#end
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" data-dismiss="modal">Cerra</a>
+				</div>
+			</div>
+		#end
+	#end
+	</tbody>
+</table>
+
+<div class="pagination-right">
+#set ($url="allpurchase?statusid=$statusid")
+#blockcomponent(DiggStylePagination with "page=$purchases" "url=$url")
+	#prev
+		&laquo;
+	#end
+	#next
+		&raquo;
+	#end
+#end
+</div>

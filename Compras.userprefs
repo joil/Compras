@@ -1,0 +1,33 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ComprasWeb/Web.config">
+    <Files>
+      <File FileName="ComprasWeb/Views/purchase/view.vm" Line="10" Column="2" />
+      <File FileName="ComprasWeb/Views/purchase/approver.vm" Line="13" Column="6" />
+      <File FileName="ComprasWeb/Views/purchase/myapprover.vm" Line="1" Column="1" />
+      <File FileName="ComprasWeb/Views/purchase/myorder.vm" Line="1" Column="1" />
+      <File FileName="ComprasWeb/Views/purchase/render.vm" Line="1" Column="1" />
+      <File FileName="ComprasWeb/Views/purchase/submit.vm" Line="1" Column="1" />
+      <File FileName="ComprasWeb/Views/admin/editpurchase.vm" Line="13" Column="6" />
+      <File FileName="ComprasWeb/Web.config" Line="20" Column="121" />
+      <File FileName="ComprasWeb/Models/Purchase.cs" Line="160" Column="17" />
+      <File FileName="ComprasWeb/Controllers/AdminController.cs" Line="16" Column="2" />
+      <File FileName="ComprasWeb/Views/mail/torender.vm" Line="5" Column="69" />
+      <File FileName="ComprasWeb/Global.asax.cs" Line="10" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="ComprasWeb" expanded="True">
+            <Node name="Global.asax" expanded="True" />
+            <Node name="Web.config" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

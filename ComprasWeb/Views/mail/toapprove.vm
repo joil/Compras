@@ -1,0 +1,21 @@
+to: $to
+cc: $cc
+from: $from
+subject: $subject
+
+Solicitud $purchase.Id
+	Empresa : $purchase.Company.Name
+	Solicitante : $purchase.UserRequest
+	Fecha Solicitud: $purchase.DateRequest
+	Aprobador : $purchase.DateApproval
+	Fecha Aprobacion: $purchase.DateApproval
+	Estado : $purchase.Status
+
+#foreach($pp in $purchaseproducts)
+	#if ($pp.Product.Name) $pp.Product.Name #end #if($pp.Comment)$pp.Comment #end #if ($pp.EstimatedPrice) $pp.EstimatedPrice #end $pp.Quantity
+#end
+
+http://compras.gdelsur.com/purchase/view.rails?idpurchase=$purchase.Id
+
+Saludos Cordiales,
+Departamento de compras.

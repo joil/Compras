@@ -1,0 +1,25 @@
+<div class="alert alert-error">
+	#macro(showexception $exc)
+
+	<b>$exc.GetType().Name</b>
+	
+	Message:$exc.Message
+	
+	#if($exc.StackTrace)
+		StackTrace:$exc.StackTrace
+	#end
+	
+	#if($exc.InnerException)
+		<b>Inner exception:</b>
+		#set($inner = $exc.InnerException)
+			#showexception($inner)
+		#end
+	#end
+	
+	<h2>Uppss !!! Ocurrio un Error Inesperado</h2>
+	
+	<pre>
+		#set($exception = $context.LastException)
+		#showexception($exception)
+	</pre>
+</div>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Compras GdelSur</title>
+    <meta name="description" content="Sitio con ejemplos y demos">
+    <meta name="author" content="Jose Pino">
+    <!—[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]—>
+    <link rel="shortcut icon" href="$siteRoot/Contents/img/favicon.ico">
+    <link rel="stylesheet" href="$siteRoot/Contents/css/bootstrap.min.css">
+    <style>
+      body { padding-top: 60px; }
+    </style>
+    <link href="$siteRoot/Contents/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script  type="text/javascript" src="$siteRoot/Contents/js/bootstrap.min.js"></script>
+    <script  type="text/javascript" src="$siteRoot/Contents/js/bootstrap-tab.js"></script>
+    <script  type="text/javascript" src="$siteRoot/Contents/js/bootstrap-alert.js"></script>
+    <script  type="text/javascript" src="$siteRoot/Contents/js/nicEdit.js"></script>
+  </head>
+  <body OnLoad="document.login.userName.focus();">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+
+        <div class="container-fluid">
+          <a class="brand" href="/"><img src="/Contents/img/logo.png"> Compras</a>
+          <div class="nav-collapse">
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+        </div><!--/span-->
+        <div class="span6">
+        #if($Flash.TypeMsg)
+			<div class=$Flash.TypeMsg>
+				<button class="close" data-dismiss="alert">x</button>
+				<b>$Flash.Msg</b>
+			</div>
+		#end
+			<div class="hero-unit">
+				<form method="post" action="/login/login.rails?returnUrl=$!returnUrl" class="form-horizontal" name="login">
+					<fieldset>
+						<legend>Usar credenciales de Red</legend>
+						<div class="control-group">
+							<label class="control-label" for="userName">Usuario :</label>
+							<div class="controls">
+								<input type="text" class="input-large" id="userName" name="userName">
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="password">Password :</label>
+							<div class="controls">
+								<input type="password" class="input-large" id="passwd" name="passwd">
+							</div>
+						</div>
+
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary">Aceptar</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+        <div class="span3">
+        </div><!--/span-->
+    </div>
+  </body>
+</html>
+

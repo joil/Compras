@@ -1,0 +1,95 @@
+<h2> Solicitud de Compra</h2>
+<form class="form-horizontal" action="updatepurchase" method="post">
+<dl class="dl-horizontal">
+	$Form.HiddenField("purchase.Id")
+	<dt>Empresa : </dt><dd>$purchase.Company.Name</dd>
+	<dt>Solicitante : </dt><dd>#if ($purchase.NameUserRequest) $purchase.NameUserRequest #else $purchase.UserRequest #end</dd>
+	<dt>Fecha : </dt><dd>$purchase.DateRequest</dd>
+	<dt>Aprobador : </dt><dd>#if($purchase.UserApproval.Name) $purchase.UserApproval.Name #else - #end</dd>
+	<dt>Fecha Aprobacion: </dt><dd>#if ($purchase.DateApproval) $purchase.DateApproval #else - #end</dd>
+	<dt>Estado: </dt><dd>#if (($purchase.Status == "En_Aprobacion") || ($purchase.Status == "Rechazada")) $purchase.Status #else $FormHelper.Select("purchase.Status", $status) #end</dd>
+	<dt>Asignado a : </dt><dd>#if (($purchase.Assigned) && ($purchase.Assigned != "0")) $purchase.Assigned #else $FormHelper.Select("purchase.Assigned", $admins, "%{firstoption='Sin Asignar ...'}") #end</dd>
+	<dt>Comentarios: </dt><dd>$FormHelper.TextArea("comment", "%{class='span11', rows='3', maxlength='250'}")<div>Quedan <span id="charsLeft"></span> caracteres</div></dd>
+	#if ($purchase.PurchaseAttachments != "")
+		<dt>Adjunto : </dt>
+			<dd>
+				#foreach($pa in $purchase.PurchaseAttachments)
+					<a href="GetUpload.rails?name=$pa.Name&path=$pa.Path">$pa.Name </a>
+				#end
+			</dd>
+	#end
+	<div id="demo" class="collapse">
+		<dt>Usuario Entrega : </dt><dd>$FormHelper.TextField("purchase.UserDelivery", "%{class='span2'}")</dd>
+		<dt>Fecha de Entrega : </dt><dd>$FormHelper.TextField("purchase.DatelikeDelivery", "%{value='$getdate',class='span2'}")</dd>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" id="btnapproval" class="btn btn-success">Actualizar</button>
+		<button type="reset" class="btn">Cancelar</button>
+		<a href="javascript:history.go(-1)" class="btn btn-inverse">Volver</a>
+	</div>
+	
+</dl>
+</form>
+     
+<table class="table table-bordered table-striped">
+	<thead>
+	  <tr>
+	    <th>Producto</th>
+	    <th>Comentario</th>
+	    <th>Precio</th>
+	    <th>Cantidad</th>
+	  </tr>
+	</thead>
+	<tbody>
+	#foreach($pp in $purchase.PurchaseProducts)
+	  <tr>
+	    <td>$pp.Product.Name</td>
+	    <td>#if ($pp.Comment) $pp.Comment #end</td>
+	    <td>#if ($pp.EstimatedPrice) $pp.EstimatedPrice #end</td>
+	    <td>$pp.Quantity</td>
+	  </tr>
+	#end
+	</tbody>
+</table>
+#if ($purchase.QuantityComment > 0)
+	<h3>Comentarios:</h3>
+	<table class="table table-bordered table-striped">
+		<thead>
+		  <tr>
+		    <th>Fecha</th>
+		    <th>Usuario</th>
+		    <th>Comentario</th>
+		  </tr>
+		</thead>
+		<tbody>
+		#foreach($pc in $purchase.PurchaseComments)
+		  <tr>
+		    <td>$pc.Created</td>
+		    <td>#if ($pc.UserComment) $pc.UserComment #end</td>
+		    <td>#if ($pc.Comment) $pc.Comment #end</td>
+		  </tr>
+		#end
+		</tbody>
+	</table>
+#end
+
+<script type="text/javascript">
+	jQuery('#comment').limit('250','#charsLeft');
+	
+	jQuery('#purchase_Status').change(function() {
+			if ((jQuery('#purchase_Status').val() == '4') ||  (jQuery('#purchase_Status').val() == 'Comprado')){
+				jQuery('#purchase_UserDelivery').val('$purchase.UserRequest');
+				jQuery('#demo').collapse('show');
+				}
+			else
+				jQuery('#demo').collapse('hide');
+		});
+		
+	jQuery('#purchase_DatelikeDelivery').datepicker({
+		format: 'dd-mm-yyyy',
+		weekStart: 1,
+		autoclose: true,
+		language:'es'
+	});
+</script>

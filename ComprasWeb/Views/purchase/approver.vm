@@ -1,0 +1,82 @@
+<h2> Tiene una solicitud para aprobar</h2>
+<dl class="dl-horizontal">
+	<dt>Empresa : </dt><dd>$purchase.Company.Name</dd>
+	<dt>Solicitante : </dt><dd>#if ($purchase.NameUserRequest) $purchase.NameUserRequest #else $purchase.UserRequest #end</dd>
+	<dt>Fecha : </dt><dd>$purchase.DateRequest</dd>
+	#if ($purchase.PurchaseAttachments)
+		<dt>Adjunto : </dt>
+			<dd>
+				#foreach($pa in $purchase.PurchaseAttachments)
+					<a href="GetUpload.rails?name=$pa.Name&path=$pa.Path">$pa.Name </a>
+				#end
+			</dd>
+	#end
+	<!--<dt>Presupuesto : </dt><dd>#if ($budget) $budget.Value #end</dd>-->
+
+<form id="formapprover" class="form-horizontal" action="toapprove" method="post">
+<table class="table table-bordered table-striped">
+	<thead>
+	  <tr>
+	    <th>Producto</th>
+	    <th>Comentario</th>
+	    <th>Precio</th>
+	    <th>Cantidad</th>
+	  </tr>
+	</thead>
+	<tbody>
+	#foreach($pp in $purchaseproducts)
+	  <tr>
+	    <td>$pp.Product.Name</td>
+	    <td>#if ($pp.Comment) $pp.Comment #end</td>
+	    <td>#if ($pp.EstimatedPrice) $pp.EstimatedPrice #end</td>
+	    <td>$pp.Quantity</td>
+	  </tr>
+	#end
+	</tbody>
+</table>
+
+	<input type="hidden" name="purchase.Id" value="$purchase.Id" />
+	<input type="hidden" id="response" name="response" />
+	<fieldset>
+		<div class="control-group">
+			<label class="control-label" for="textarea">Comentario</label>
+			<div class="controls">
+  				$FormHelper.TextArea("comment", "%{class='span6', rows='3', maxlength='250'}")
+  				<div>Quedan <span id="charsLeft"></span> caracteres</div>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<button type="submit" id="btnapproval" class="btn btn-success">Aprobar</button>
+			<button type="cancel" id="btnreject" class="btn btn-danger">Rechazar</button>
+		</div>
+	</fieldset>
+</form>
+<script type="text/javascript">
+	jQuery('#comment').limit('250','#charsLeft');
+
+	jQuery("#btnapproval").bind("click", function(e) {
+		e.preventDefault();
+		jQuery('#response').val('approval');
+		jQuery('#formapprover').submit();
+	});
+	
+	jQuery("#btnreject").bind("click", function(e) {
+		e.preventDefault();
+		jQuery('#response').val('reject');
+		jQuery('#formapprover').submit();
+	});
+</script>
+
+	<!--<div class="form-actions">
+		<form class="form-horizontal" action="approval" method="post">
+			<input type="hidden" name="purchase.Id" value="$purchase.Id" />
+			<button type="submit" class="btn btn-success">Aprobar</button>
+		</form>
+		<form class="form-horizontal" action="reject" method="post">
+			<input type="hidden" name="purchase.Id" value="$purchase.Id" />
+			<button type="cancel" class="btn btn-danger">Rechazar</button>
+		</form>
+	</div>-->
+
+
