@@ -1,14 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Security.Principal;
 
 namespace ComprasWeb.Models
 {
 	public class User : IPrincipal
 	{
-		private static List<string> _admins = new List<string>() {"jpino","logas","lmolina"};
-
 		public User (string username) {
 			UserName = username;
 		}
@@ -55,7 +54,17 @@ namespace ComprasWeb.Models
         }
 
 		public static List<string> admins {
-			get { return _admins; }
+			get { return Admins(); }
+		}
+
+		private static List<string> Admins() {
+
+			List<string> _admins = new List<string>();
+
+			foreach (string str in ConfigurationManager.AppSettings["admins"].Split(','))
+				_admins.Add(str);
+
+			return _admins;
 		}
 
 		#endregion

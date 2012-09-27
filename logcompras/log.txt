@@ -1,9 +1,8 @@
-﻿2012-09-05 08:57:14,550 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
-2012-09-05 09:42:06,555 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
-2012-09-05 09:47:59,292 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
-2012-09-05 09:57:52,566 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: logas
-2012-09-05 10:00:34,251 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: logas
-2012-09-05 10:09:06,140 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
-2012-09-05 10:12:11,225 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
-2012-09-05 10:33:14,736 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
-2012-09-05 10:36:13,793 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
+﻿2012-09-27 17:49:38,031 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
+2012-09-27 17:52:52,702 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
+2012-09-27 17:56:39,433 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
+2012-09-27 18:01:44,237 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
+2012-09-27 18:16:01,368 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
+2012-09-27 18:18:22,063 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
+2012-09-27 18:35:13,483 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
+2012-09-27 18:36:43,675 [Threadpool worker] DEBUG Login [(null)] ((null)) - User logged in: jpino
