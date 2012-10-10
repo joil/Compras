@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 using System.DirectoryServices;
 
 using ComprasWeb.Models;
@@ -25,10 +26,10 @@ namespace ComprasWeb.Controllers
 		public static string GetMailByLogin(string Login)
 		{
 			SearchResult result;
-			string path = "ldap://vtrnc04pdc01/dc=vtholding,dc=cl";
-			string domainAndUsername = "vtholding" + @"\traspaso";
+			string path = ConfigurationManager.AppSettings["pathpdc"];
+			string domainAndUsername = ConfigurationManager.AppSettings["domain"] + @"\" + ConfigurationManager.AppSettings["userldap"];
 			try {
-				DirectoryEntry entry = new DirectoryEntry(path, domainAndUsername, "Rancagua2008");
+				DirectoryEntry entry = new DirectoryEntry(path, domainAndUsername, ConfigurationManager.AppSettings["passldap"]);
 				DirectorySearcher search = new DirectorySearcher(entry);
 				search.Filter = "(&(sAMAccountName="+ Login +"))";
 				result = search.FindOne();
@@ -43,10 +44,10 @@ namespace ComprasWeb.Controllers
 		public static User GetUserByCookie(string name) {
 			User user = new User(name);
 			SearchResult result;
-			string path = "ldap://vtrnc04pdc01/dc=vtholding,dc=cl";
-			string domainAndUsername = "vtholding" + @"\traspaso";
+			string path = ConfigurationManager.AppSettings["pathpdc"];
+			string domainAndUsername = ConfigurationManager.AppSettings["domain"] + @"\" + ConfigurationManager.AppSettings["userldap"];
 			try {
-				DirectoryEntry entry = new DirectoryEntry(path, domainAndUsername, "Rancagua2008");
+				DirectoryEntry entry = new DirectoryEntry(path, domainAndUsername, ConfigurationManager.AppSettings["passldap"]);
 				DirectorySearcher search = new DirectorySearcher(entry);
 				search.Filter = "(&(sAMAccountName="+ name +"))";
 				result = search.FindOne();

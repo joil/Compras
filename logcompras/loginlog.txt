@@ -1,8 +1,0 @@
-﻿2012-09-27 17:49:38,031 DEBUG Threadpool worker Login - User logged in: jpino
-2012-09-27 17:52:52,702 DEBUG Threadpool worker Login - User logged in: jpino
-2012-09-27 17:56:39,433 DEBUG Threadpool worker Login - User logged in: jpino
-2012-09-27 18:01:44,237 DEBUG Threadpool worker Login - User logged in: jpino
-2012-09-27 18:16:01,368 DEBUG Threadpool worker Login - User logged in: jpino
-2012-09-27 18:18:22,063 DEBUG Threadpool worker Login - User logged in: jpino
-2012-09-27 18:35:13,483 DEBUG Threadpool worker Login - User logged in: jpino
-2012-09-27 18:36:43,675 DEBUG Threadpool worker Login - User logged in: jpino
