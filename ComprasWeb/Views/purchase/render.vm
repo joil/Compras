@@ -1,5 +1,6 @@
 <h2> Tiene una solicitud para recepcionar</h2>
 <dl class="dl-horizontal">
+	<dt>ID : </dt><dd>$purchase.Id</dd>
 	<dt>Empresa : </dt><dd>$purchase.Company.Name</dd>
 	<dt>Solicitante : </dt><dd>#if ($purchase.NameUserRequest) $purchase.NameUserRequest #else $purchase.UserRequest #end</dd>
 	<dt>Fecha : </dt><dd>$purchase.DateRequest</dd>

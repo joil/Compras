@@ -1,24 +1,22 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ComprasWeb/Web.config">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ComprasWeb/Models/Purchase.cs">
     <Files>
       <File FileName="ComprasWeb/Models/Product.cs" Line="13" Column="3" />
       <File FileName="ComprasWeb/Controllers/PurchaseController.cs" Line="36" Column="90" />
       <File FileName="ComprasWeb/Views/purchase/new.vm" Line="4" Column="61" />
       <File FileName="ComprasWeb/Views/layouts/default.vm" Line="19" Column="5" />
       <File FileName="ComprasWeb/Web.config" Line="1" Column="1" />
+      <File FileName="ComprasWeb/Models/Purchase.cs" Line="149" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="ComprasWeb" expanded="True">
-            <Node name="Controllers" expanded="True" />
-            <Node name="Views" expanded="True">
-              <Node name="layouts" expanded="True" />
-              <Node name="purchase" expanded="True" />
+            <Node name="Models" expanded="True">
+              <Node name="Purchase.cs" selected="True" />
             </Node>
             <Node name="Global.asax" expanded="True" />
-            <Node name="Web.config" selected="True" />
           </Node>
         </State>
       </Pad>

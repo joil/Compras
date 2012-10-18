@@ -22,7 +22,7 @@
 	    <td>#if ($p.Status) $p.Status #else - #end</td>
 	    <td>#if ($p.QuantityComment > 0) <a class="btn-small btn-info" data-toggle="modal" href="#Modal$p.Id" >Comentarios</a> #else - #end</td>
 	    <td>
-	    	#if ($p.Status == $open) <a class="btn-small btn-warning" href=/purchase/approver.rails?idpurchase=$p.Id>Por Aprobacion</a> #else - #end
+	    	#if ($p.Status == $open) <a class="btn-small btn-warning" href=/purchase/approver.rails?idpurchase=$p.Id>Por Aprobacion</a> #else <a class="btn-small btn-success" href='/purchase/view.rails?idpurchase=$p.Id'>Ver</a> #end
 	    </td>
 	  </tr>
 		#if($p.QuantityComment > 0)

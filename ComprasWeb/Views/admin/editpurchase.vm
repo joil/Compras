@@ -2,6 +2,7 @@
 <form class="form-horizontal" action="updatepurchase" method="post">
 <dl class="dl-horizontal">
 	$Form.HiddenField("purchase.Id")
+	<dt>ID : </dt><dd>$purchase.Id</dd>
 	<dt>Empresa : </dt><dd>$purchase.Company.Name</dd>
 	<dt>Solicitante : </dt><dd>#if ($purchase.NameUserRequest) $purchase.NameUserRequest #else $purchase.UserRequest #end</dd>
 	<dt>Fecha : </dt><dd>$purchase.DateRequest</dd>
