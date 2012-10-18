@@ -1,6 +1,0 @@
-﻿2012-10-18 11:01:45,657 DEBUG Threadpool worker Login - User logged in: jpino
-2012-10-18 11:02:12,691 DEBUG Threadpool worker Login - User logged in: jpino
-2012-10-18 11:04:05,516 DEBUG Threadpool worker Login - User logged in: jpino
-2012-10-18 12:02:14,464 ERROR Threadpool worker Login - User failed in: jpino
-2012-10-18 12:02:29,272 DEBUG Threadpool worker Login - User logged in: jpino
-2012-10-18 12:02:36,332 DEBUG Threadpool worker Login - User logged in: jpino
